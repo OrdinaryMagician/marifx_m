@@ -1,0 +1,117 @@
+AddOptionMenu "OptionsMenu"
+{
+	StaticText " "
+	SubMenu "MariFX Options", "MFXOptionsMenu"
+}
+
+OptionMenu "MFXOptionsMenu"
+{
+	Title "MariFX Options"
+	StaticText " "
+	StaticText "Film Grain", "Gold"
+	StaticText " "
+	Option "Enable", "mfx_ne", "YesNo"
+	Slider "Grain Intensity", "mfx_ni", 0, 1, 0.01, 2
+	Command "Reset to Default", "event resetmfxvars 0"
+	StaticText " "
+	StaticText "Screen Dirt", "Gold"
+	StaticText " "
+	Option "Enable", "mfx_dirtenable", "YesNo"
+	Slider "Dirt Scale", "mfx_dirtmc", 1, 8, 1, 0
+	Slider "Dirt Intensity", "mfx_dirtcfactor", 0, 1, 0.01, 2
+	Command "Reset to Default", "event resetmfxvars 1"
+	StaticText " "
+	StaticText "Color Grading", "Gold"
+	StaticText " "
+	Option "Enable", "mfx_gradeenable", "YesNo"
+	Slider "Red Intensity", "mfx_grademul_r", 0, 2, 0.01, 2
+	Slider "Green Intensity", "mfx_grademul_g", 0, 2, 0.01, 2
+	Slider "Blue Intensity", "mfx_grademul_b", 0, 2, 0.01, 2
+	Slider "Red Gamma", "mfx_gradepow_r", 0, 2, 0.01, 2
+	Slider "Green Gamma", "mfx_gradepow_g", 0, 2, 0.01, 2
+	Slider "Blue Gamma", "mfx_gradepow_b", 0, 2, 0.01, 2
+	Slider "Red Tint", "mfx_gradecol_r", -1, 1, 0.01, 2
+	Slider "Green Tint", "mfx_gradecol_g", -1, 1, 0.01, 2
+	Slider "Blue Tint", "mfx_gradecol_b", -1, 1, 0.01, 2
+	Slider "Tint Factor", "mfx_gradecolfact", -1, 1, 0.01, 2
+	Slider "Saturation Intensity", "mfx_gradesatmul", 0, 2, 0.01, 2
+	Slider "Saturation Gamma", "mfx_gradesatpow", 0, 2, 0.01, 2
+	Slider "Value Intensity", "mfx_gradevalmul", 0, 2, 0.01, 2
+	Slider "Value Gamma", "mfx_gradevalpow", 0, 2, 0.01, 2
+	Command "Reset to Default", "event resetmfxvars 2"
+	StaticText " "
+	StaticText "Color Matrix", "Gold"
+	StaticText " "
+	Option "Enable", "mfx_cmatenable", "YesNo"
+	Slider "Red->Red", "mfx_cmat_rr", -2, 2, 0.01, 2
+	Slider "Red->Green", "mfx_cmat_rg", -2, 2, 0.01, 2
+	Slider "Red->Blue", "mfx_cmat_rb", -2, 2, 0.01, 2
+	Slider "Green->Red", "mfx_cmat_gr", -2, 2, 0.01, 2
+	Slider "Green->Green", "mfx_cmat_gg", -2, 2, 0.01, 2
+	Slider "Green->Blue", "mfx_cmat_gb", -2, 2, 0.01, 2
+	Slider "Blue->Red", "mfx_cmat_br", -2, 2, 0.01, 2
+	Slider "Blue->Green", "mfx_cmat_bg", -2, 2, 0.01, 2
+	Slider "Blue->Blue", "mfx_cmat_bb", -2, 2, 0.01, 2
+	Command "Reset to Default", "event resetmfxvars 3"
+	StaticText " "
+	StaticText "Hue-Saturation", "Gold"
+	StaticText " "
+	Option "Enable", "mfx_hsenable", "YesNo"
+	Slider "Overlap", "mfx_hsover", 0, 0.5, 0.01, 2
+	Slider "Master Hue", "mfx_hshue_a", -1, 1, 0.01, 2
+	Slider "Master Saturation", "mfx_hssat_a", -1, 1, 0.01, 2
+	Slider "Master Value", "mfx_hsval_a", -1, 1, 0.01, 2
+	Slider "Red Hue", "mfx_hshue_r", -1, 1, 0.01, 2
+	Slider "Red Saturation", "mfx_hssat_r", -1, 1, 0.01, 2
+	Slider "Red Value", "mfx_hsval_r", -1, 1, 0.01, 2
+	Slider "Yellow Hue", "mfx_hshue_y", -1, 1, 0.01, 2
+	Slider "Yellow Saturation", "mfx_hssat_y", -1, 1, 0.01, 2
+	Slider "Yellow Value", "mfx_hsval_y", -1, 1, 0.01, 2
+	Slider "Green Hue", "mfx_hshue_g", -1, 1, 0.01, 2
+	Slider "Green Saturation", "mfx_hssat_g", -1, 1, 0.01, 2
+	Slider "Green Value", "mfx_hsval_g", -1, 1, 0.01, 2
+	Slider "Cyan Hue", "mfx_hshue_c", -1, 1, 0.01, 2
+	Slider "Cyan Saturation", "mfx_hssat_c", -1, 1, 0.01, 2
+	Slider "Cyan Value", "mfx_hsval_c", -1, 1, 0.01, 2
+	Slider "Blue Hue", "mfx_hshue_b", -1, 1, 0.01, 2
+	Slider "Blue Saturation", "mfx_hssat_b", -1, 1, 0.01, 2
+	Slider "Blue Value", "mfx_hsval_b", -1, 1, 0.01, 2
+	Slider "Magenta Hue", "mfx_hshue_m", -1, 1, 0.01, 2
+	Slider "Magenta Saturation", "mfx_hssat_m", -1, 1, 0.01, 2
+	Slider "Magenta Value", "mfx_hsval_m", -1, 1, 0.01, 2
+	Command "Reset to Default", "event resetmfxvars 4"
+	StaticText " "
+	StaticText "BlurSharpShift", "Gold"
+	StaticText " "
+	StaticText "(Some pretentious schmucks", "Brown"
+	StaticText "claim this \"enhances\" the visuals)", "Brown"
+	StaticText " "
+	Option "Blur Enable", "mfx_bssblurenable", "YesNo"
+	Slider "Blur Radius", "mfx_bssblurradius", 0, 1, 0.05, 2
+	Option "Sharp Enable", "mfx_bsssharpenable", "YesNo"
+	Slider "Sharp Radius", "mfx_bsssharpradius", 0, 1, 0.05, 2
+	Slider "Sharp Amount", "mfx_bsssharpamount", 0, 8, 0.1, 1
+	Option "Shift Enable", "mfx_bssshiftenable", "YesNo"
+	Slider "Shift Radius", "mfx_bssshiftradius", 0, 1, 0.05, 2
+	Command "Reset to Default", "event resetmfxvars 5"
+	StaticText " "
+	StaticText "Border Blur", "Gold"
+	StaticText " "
+	Option "Enable", "mfx_bblurenable", "YesNo"
+	Slider "Blur Gamma", "mfx_bblurpow", 0, 4, 0.01, 2
+	Slider "Blur Intensity", "mfx_bblurmul", 0, 2, 0.01, 2
+	Slider "Blur Offset", "mfx_bblurbump", -1, 1, 0.01, 2
+	Slider "Blur Radius", "mfx_bblurradius", 0, 4, 0.01, 2
+	Command "Reset to Default", "event resetmfxvars 6"
+	StaticText " "
+	StaticText "Vignette", "Gold"
+	StaticText " "
+	Option "Enable", "mfx_vigenable", "YesNo"
+	Slider "Vignette Red", "mfx_vigcolor_r", -1, 1, 0.01, 2
+	Slider "Vignette Green", "mfx_vigcolor_g", -1, 1, 0.01, 2
+	Slider "Vignette Blue", "mfx_vigcolor_b", -1, 1, 0.01, 2
+	Slider "Vignette Gamma", "mfx_vigpow", 0, 4, 0.01, 2
+	Slider "Vignette Intensity", "mfx_vigmul", 0, 2, 0.01, 2
+	Slider "Vignette Offset", "mfx_vigbump", -1, 1, 0.01, 2
+	Command "Reset to Default", "event resetmfxvars 7"
+}

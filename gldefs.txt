@@ -1,0 +1,108 @@
+HardwareShader postprocess scene
+{
+	Name "mfx_grading"
+	Shader "shaders/glsl/mfx_grading.fp" 330
+	Uniform vec3 grademul
+	Uniform vec3 gradepow
+	Uniform vec3 gradecol
+	Uniform float gradecolfact
+	Uniform float gradesatmul
+	Uniform float gradesatpow
+	Uniform float gradevalmul
+	Uniform float gradevalpow
+}
+
+HardwareShader postprocess scene
+{
+	Name "mfx_colormatrix"
+	Shader "shaders/glsl/mfx_colormatrix.fp" 330
+	Uniform vec3 redrow
+	Uniform vec3 greenrow
+	Uniform vec3 bluerow
+}
+
+HardwareShader postprocess scene
+{
+	Name "mfx_huesaturation"
+	Shader "shaders/glsl/mfx_huesaturation.fp" 330
+	Uniform float hsover
+	Uniform float hshue_a
+	Uniform float hssat_a
+	Uniform float hsval_a
+	Uniform float hshue_r
+	Uniform float hssat_r
+	Uniform float hsval_r
+	Uniform float hshue_y
+	Uniform float hssat_y
+	Uniform float hsval_y
+	Uniform float hshue_g
+	Uniform float hssat_g
+	Uniform float hsval_g
+	Uniform float hshue_c
+	Uniform float hssat_c
+	Uniform float hsval_c
+	Uniform float hshue_b
+	Uniform float hssat_b
+	Uniform float hsval_b
+	Uniform float hshue_m
+	Uniform float hssat_m
+	Uniform float hsval_m
+}
+
+HardwareShader postprocess scene
+{
+	Name "mfx_borderblur"
+	Shader "shaders/glsl/mfx_borderblur.fp" 330
+	Uniform float bblurpow
+	Uniform float bblurmul
+	Uniform float bblurbump
+	Uniform float bblurradius
+}
+
+HardwareShader postprocess scene
+{
+	Name "mfx_grain"
+	Shader "shaders/glsl/mfx_grain.fp" 330
+	Uniform float Timer
+	Uniform float ni
+	Texture NoiseTexture "textures/mfxnoise.png"
+}
+
+HardwareShader postprocess scene
+{
+	Name "mfx_dirt"
+	Shader "shaders/glsl/mfx_dirt.fp" 330
+	Uniform float dirtcfactor
+	Uniform float dirtmc
+	Texture NoiseTexture "textures/mfxnoise.png"
+}
+
+HardwareShader postprocess scene
+{
+	Name "mfx_bss_blur"
+	Shader "shaders/glsl/mfx_bss_blur.fp" 330
+	Uniform float bssblurradius
+}
+HardwareShader postprocess scene
+{
+	Name "mfx_bss_sharp"
+	Shader "shaders/glsl/mfx_bss_sharp.fp" 330
+	Uniform float bsssharpradius
+	Uniform float bsssharpamount
+}
+HardwareShader postprocess scene
+{
+	Name "mfx_bss_shift"
+	Shader "shaders/glsl/mfx_bss_shift.fp" 330
+	Uniform float bssshiftradius
+}
+
+HardwareShader postprocess scene
+{
+	Name "mfx_vignette"
+	Shader "shaders/glsl/mfx_vignette.fp" 330
+	Uniform vec3 vigcolor
+	Uniform float vigpow
+	Uniform float vigmul
+	Uniform float vigbump
+}

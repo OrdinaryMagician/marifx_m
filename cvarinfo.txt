@@ -1,0 +1,79 @@
+user bool mfx_ne = true;
+user float mfx_ni = 0.05;
+
+user bool mfx_dirtenable = false;
+user float mfx_dirtcfactor = 0.1;
+user float mfx_dirtmc = 3.0;
+
+user bool mfx_gradeenable = true;
+user float mfx_grademul_r = 1.0;
+user float mfx_grademul_g = 1.0;
+user float mfx_grademul_b = 1.0;
+user float mfx_gradepow_r = 1.0;
+user float mfx_gradepow_g = 1.0;
+user float mfx_gradepow_b = 1.0;
+user float mfx_gradecol_r = 1.0;
+user float mfx_gradecol_g = 1.0;
+user float mfx_gradecol_b = 1.0;
+user float mfx_gradecolfact = 0.0;
+user float mfx_gradesatmul = 1.0;
+user float mfx_gradesatpow = 1.0;
+user float mfx_gradevalmul = 1.0;
+user float mfx_gradevalpow = 1.0;
+
+user bool mfx_cmatenable = false;
+user float mfx_cmat_rr = 1.0;
+user float mfx_cmat_rg = 0.0;
+user float mfx_cmat_rb = 0.0;
+user float mfx_cmat_gr = 0.0;
+user float mfx_cmat_gg = 1.0;
+user float mfx_cmat_gb = 0.0;
+user float mfx_cmat_br = 0.0;
+user float mfx_cmat_bg = 0.0;
+user float mfx_cmat_bb = 1.0;
+
+user bool mfx_hsenable = false;
+user float mfx_hsover = 0.0;
+user float mfx_hshue_a = 0.0;
+user float mfx_hssat_a = 0.0;
+user float mfx_hsval_a = 0.0;
+user float mfx_hshue_r = 0.0;
+user float mfx_hssat_r = 0.0;
+user float mfx_hsval_r = 0.0;
+user float mfx_hshue_y = 0.0;
+user float mfx_hssat_y = 0.0;
+user float mfx_hsval_y = 0.0;
+user float mfx_hshue_g = 0.0;
+user float mfx_hssat_g = 0.0;
+user float mfx_hsval_g = 0.0;
+user float mfx_hshue_c = 0.0;
+user float mfx_hssat_c = 0.0;
+user float mfx_hsval_c = 0.0;
+user float mfx_hshue_b = 0.0;
+user float mfx_hssat_b = 0.0;
+user float mfx_hsval_b = 0.0;
+user float mfx_hshue_m = 0.0;
+user float mfx_hssat_m = 0.0;
+user float mfx_hsval_m = 0.0;
+
+user bool mfx_bssblurenable = false;
+user float mfx_bssblurradius = 0.25;
+user bool mfx_bsssharpenable = false;
+user float mfx_bsssharpradius = 1.0;
+user float mfx_bsssharpamount = 3.0;
+user bool mfx_bssshiftenable = false;
+user float mfx_bssshiftradius = 0.75;
+
+user bool mfx_bblurenable = false;
+user float mfx_bblurpow = 1.0;
+user float mfx_bblurmul = 1.0;
+user float mfx_bblurbump = 0.0;
+user float mfx_bblurradius = 1.0;
+
+user bool mfx_vigenable = false;
+user float mfx_vigcolor_r = -1.0;
+user float mfx_vigcolor_g = -1.0;
+user float mfx_vigcolor_b = -1.0;
+user float mfx_vigpow = 1.0;
+user float mfx_vigmul = 1.0;
+user float mfx_vigbump = 0.0;
