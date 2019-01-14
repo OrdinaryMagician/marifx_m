@@ -10,3 +10,4 @@ Included:
  - Vignette.
  - Color Matrix.
  - Hue-Saturation.
+ - Palette reduction+dither from RetroFX (has doom, heretic, hexen and strife palettes).

@@ -106,3 +106,12 @@ HardwareShader postprocess scene
 	Uniform float vigmul
 	Uniform float vigbump
 }
+
+HardwareShader postprocess scene
+{
+	Name "mfx_palette"
+	Shader "shaders/glsl/mfx_palette.fp" 330
+	Texture PalLUTTexture "textures/mfxpal.png"
+	Uniform float paldither
+	Uniform int palnum
+}

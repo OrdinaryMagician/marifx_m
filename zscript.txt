@@ -30,7 +30,9 @@ Class MariFXHandler : StaticEventHandler
 		mfx_hshue_y, mfx_hssat_y, mfx_hsval_y, mfx_hshue_g,
 		mfx_hssat_g, mfx_hsval_g, mfx_hshue_c, mfx_hssat_c,
 		mfx_hsval_c, mfx_hshue_b, mfx_hssat_b, mfx_hsval_b,
-		mfx_hshue_m, mfx_hssat_m, mfx_hsval_m;
+		mfx_hshue_m, mfx_hssat_m, mfx_hsval_m,
+			// palette
+		mfx_palenable, mfx_palnum, mfx_paldither;
 
 	override void RenderOverlay( RenderEvent e )
 	{
@@ -166,6 +168,12 @@ Class MariFXHandler : StaticEventHandler
 		Shader.SetUniform1f(p,"mfx_vignette","vigpow",mfx_vigpow.GetFloat());
 		Shader.SetUniform1f(p,"mfx_vignette","vigmul",mfx_vigmul.GetFloat());
 		Shader.SetUniform1f(p,"mfx_vignette","vigbump",mfx_vigbump.GetFloat());
+		if ( !mfx_palenable ) mfx_palenable = CVar.GetCVar('mfx_palenable',p);
+		if ( !mfx_palnum ) mfx_palnum = CVar.GetCVar('mfx_palnum',p);
+		if ( !mfx_paldither ) mfx_paldither = CVar.GetCVar('mfx_paldither',p);
+		Shader.SetEnabled(p,"mfx_palette",mfx_palenable.GetBool());
+		Shader.SetUniform1i(p,"mfx_palette","palnum",mfx_palnum.GetInt());
+		Shader.SetUniform1f(p,"mfx_palette","paldither",mfx_paldither.GetFloat());
 	}
 	override void ConsoleProcess( ConsoleEvent e )
 	{
@@ -333,6 +341,14 @@ Class MariFXHandler : StaticEventHandler
 				mfx_vigpow.ResetToDefault();
 				mfx_vigmul.ResetToDefault();
 				mfx_vigbump.ResetToDefault();
+				break;
+			case 8:
+				if ( !mfx_palenable ) mfx_palenable = CVar.GetCVar('mfx_palenable',p);
+				if ( !mfx_palnum ) mfx_palnum = CVar.GetCVar('mfx_palnum',p);
+				if ( !mfx_paldither ) mfx_paldither = CVar.GetCVar('mfx_paldither',p);
+				mfx_palenable.ResetToDefault();
+				mfx_palnum.ResetToDefault();
+				mfx_paldither.ResetToDefault();
 				break;
 			}
 		}

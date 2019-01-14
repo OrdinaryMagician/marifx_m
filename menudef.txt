@@ -4,6 +4,26 @@ AddOptionMenu "OptionsMenu"
 	SubMenu "MariFX Options", "MFXOptionsMenu"
 }
 
+OptionValue "MFXPalette"
+{
+	0, "Standard VGA"
+	1, "Doom"
+	2, "Heretic"
+	3, "Hexen"
+	4, "Strife"
+	5, "Hacx"
+	6, "Wolf3D"
+	7, "Rise of the Triad"
+	8, "Duke Nukem 3D"
+	9, "Blood"
+	10, "Shadow Warrior"
+	11, "Quake"
+	12, "Hexen 2"
+	13, "Quake 2"
+	14, "Amulets & Armor"
+	15, "Project .Blank"
+}
+
 OptionMenu "MFXOptionsMenu"
 {
 	Title "MariFX Options"
@@ -114,4 +134,11 @@ OptionMenu "MFXOptionsMenu"
 	Slider "Vignette Intensity", "mfx_vigmul", 0, 2, 0.01, 2
 	Slider "Vignette Offset", "mfx_vigbump", -1, 1, 0.01, 2
 	Command "Reset to Default", "event resetmfxvars 7"
+	StaticText " "
+	StaticText "Palette", "Gold"
+	StaticText " "
+	Option "Enable", "mfx_palenable", "YesNo"
+	Option "Palette", "mfx_palnum", "MFXPalette"
+	Slider "Dithering", "mfx_paldither", 0, 1, 0.01, 2
+	Command "Reset to Default", "event resetmfxvars 8"
 }

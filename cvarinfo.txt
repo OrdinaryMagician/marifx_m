@@ -77,3 +77,7 @@ user float mfx_vigcolor_b = -1.0;
 user float mfx_vigpow = 1.0;
 user float mfx_vigmul = 1.0;
 user float mfx_vigbump = 0.0;
+
+user bool mfx_palenable = false;
+user int mfx_palnum = 1;
+user float mfx_paldither = 0.02;
