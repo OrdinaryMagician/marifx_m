@@ -28,6 +28,14 @@ OptionMenu "MFXOptionsMenu"
 {
 	Title "MariFX Options"
 	StaticText " "
+	StaticText "Luma Sharpen", "Gold"
+	StaticText " "
+	Option "Enable", "mfx_lsharpenable", "YesNo"
+	Slider "Sharpen Radius", "mfx_lsharpradius", 0, 1, 0.01, 2
+	Slider "Sharpen Threshold", "mfx_lsharpclamp", 0, 1, 0.01, 2
+	Slider "Sharpen Strength", "mfx_lsharpblend", 0, 8, 0.1, 1
+	Command "Reset to Default", "event resetmfxvars 9"
+	StaticText " "
 	StaticText "Film Grain", "Gold"
 	StaticText " "
 	Option "Enable", "mfx_ne", "YesNo"

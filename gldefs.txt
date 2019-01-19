@@ -1,5 +1,14 @@
 HardwareShader postprocess scene
 {
+	Name "mfx_lumasharp"
+	Shader "shaders/glsl/mfx_lumasharp.fp" 330
+	Uniform float sharpradius
+	Uniform float sharpclamp
+	Uniform float sharpblend
+}
+
+HardwareShader postprocess scene
+{
 	Name "mfx_grading"
 	Shader "shaders/glsl/mfx_grading.fp" 330
 	Uniform vec3 grademul
@@ -51,6 +60,26 @@ HardwareShader postprocess scene
 
 HardwareShader postprocess scene
 {
+	Name "mfx_bss_blur"
+	Shader "shaders/glsl/mfx_bss_blur.fp" 330
+	Uniform float bssblurradius
+}
+HardwareShader postprocess scene
+{
+	Name "mfx_bss_sharp"
+	Shader "shaders/glsl/mfx_bss_sharp.fp" 330
+	Uniform float bsssharpradius
+	Uniform float bsssharpamount
+}
+HardwareShader postprocess scene
+{
+	Name "mfx_bss_shift"
+	Shader "shaders/glsl/mfx_bss_shift.fp" 330
+	Uniform float bssshiftradius
+}
+
+HardwareShader postprocess scene
+{
 	Name "mfx_borderblur"
 	Shader "shaders/glsl/mfx_borderblur.fp" 330
 	Uniform float bblurpow
@@ -75,26 +104,6 @@ HardwareShader postprocess scene
 	Uniform float dirtcfactor
 	Uniform float dirtmc
 	Texture NoiseTexture "textures/mfxnoise.png"
-}
-
-HardwareShader postprocess scene
-{
-	Name "mfx_bss_blur"
-	Shader "shaders/glsl/mfx_bss_blur.fp" 330
-	Uniform float bssblurradius
-}
-HardwareShader postprocess scene
-{
-	Name "mfx_bss_sharp"
-	Shader "shaders/glsl/mfx_bss_sharp.fp" 330
-	Uniform float bsssharpradius
-	Uniform float bsssharpamount
-}
-HardwareShader postprocess scene
-{
-	Name "mfx_bss_shift"
-	Shader "shaders/glsl/mfx_bss_shift.fp" 330
-	Uniform float bssshiftradius
 }
 
 HardwareShader postprocess scene

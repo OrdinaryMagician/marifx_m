@@ -2,8 +2,11 @@ version "3.3"
 
 Class MariFXHandler : StaticEventHandler
 {
+			// luma sharpen
+	transient ui CVar mfx_lsharpenable, mfx_lsharpradius,
+		mfx_lsharpclamp, mfx_lsharpblend,
 			// noise
-	transient ui CVar mfx_ne, mfx_ni,
+		mfx_ne, mfx_ni,
 			// dirt
 		mfx_dirtenable, mfx_dirtcfactor, mfx_dirtmc,
 			// grading
@@ -37,6 +40,14 @@ Class MariFXHandler : StaticEventHandler
 	override void RenderOverlay( RenderEvent e )
 	{
 		PlayerInfo p = players[consoleplayer];
+		if ( !mfx_lsharpenable ) mfx_lsharpenable = CVar.GetCVar('mfx_lsharpenable',p);
+		if ( !mfx_lsharpradius ) mfx_lsharpradius = CVar.GetCVar('mfx_lsharpradius',p);
+		if ( !mfx_lsharpclamp ) mfx_lsharpclamp = CVar.GetCVar('mfx_lsharpclamp',p);
+		if ( !mfx_lsharpblend ) mfx_lsharpblend = CVar.GetCVar('mfx_lsharpblend',p);
+		Shader.SetEnabled(p,"mfx_lumasharp",mfx_lsharpenable.GetBool());
+		Shader.SetUniform1f(p,"mfx_lumasharp","sharpradius",mfx_lsharpradius.GetFloat());
+		Shader.SetUniform1f(p,"mfx_lumasharp","sharpclamp",mfx_lsharpclamp.GetFloat());
+		Shader.SetUniform1f(p,"mfx_lumasharp","sharpblend",mfx_lsharpblend.GetFloat());
 		if ( !mfx_ne ) mfx_ne = CVar.GetCVar('mfx_ne',p);
 		if ( !mfx_ni ) mfx_ni = CVar.GetCVar('mfx_ni',p);
 		Shader.SetEnabled(p,"mfx_grain",mfx_ne.GetBool());
