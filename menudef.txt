@@ -71,7 +71,7 @@ OptionMenu "MFXOptionsMenu"
 	Slider "Sharpen Radius", "mfx_lsharpradius", 0, 1, 0.01, 2
 	Slider "Sharpen Threshold", "mfx_lsharpclamp", 0, 1, 0.01, 2
 	Slider "Sharpen Strength", "mfx_lsharpblend", 0, 8, 0.1, 1
-	Command "Reset to Default", "event resetmfxvars 8"
+	SafeCommand "Reset to Default", "event resetmfxvars 8"
 	StaticText " "
 	StaticText "Film Grain", "Gold"
 	StaticText " "
@@ -81,14 +81,14 @@ OptionMenu "MFXOptionsMenu"
 	Slider "Grain Contrast", "mfx_np", 0.5, 4, 0.01, 2
 	Option "Grain Blend Mode", "mfx_nb", "MFXGrainBlend"
 	Slider "Grain Dark Mask Contrast", "mfx_bnp", 0.5, 8, 0.01, 2
-	Command "Reset to Default", "event resetmfxvars 0"
+	SafeCommand "Reset to Default", "event resetmfxvars 0"
 	StaticText " "
 	StaticText "Screen Dirt", "Gold"
 	StaticText " "
 	Option "Enable", "mfx_dirtenable", "YesNo"
 	Slider "Dirt Scale", "mfx_dirtmc", 1, 8, 1, 0
 	Slider "Dirt Intensity", "mfx_dirtcfactor", 0, 1, 0.01, 2
-	Command "Reset to Default", "event resetmfxvars 1"
+	SafeCommand "Reset to Default", "event resetmfxvars 1"
 	StaticText " "
 	StaticText "Color Grading", "Gold"
 	StaticText " "
@@ -107,7 +107,7 @@ OptionMenu "MFXOptionsMenu"
 	Slider "Saturation Gamma", "mfx_gradesatpow", 0, 2, 0.01, 2
 	Slider "Value Intensity", "mfx_gradevalmul", 0, 2, 0.01, 2
 	Slider "Value Gamma", "mfx_gradevalpow", 0, 2, 0.01, 2
-	Command "Reset to Default", "event resetmfxvars 2"
+	SafeCommand "Reset to Default", "event resetmfxvars 2"
 	StaticText " "
 	StaticText "Color Matrix", "Gold"
 	StaticText " "
@@ -121,7 +121,7 @@ OptionMenu "MFXOptionsMenu"
 	Slider "Blue->Red", "mfx_cmat_br", -2, 2, 0.01, 2
 	Slider "Blue->Green", "mfx_cmat_bg", -2, 2, 0.01, 2
 	Slider "Blue->Blue", "mfx_cmat_bb", -2, 2, 0.01, 2
-	Command "Reset to Default", "event resetmfxvars 3"
+	SafeCommand "Reset to Default", "event resetmfxvars 3"
 	StaticText " "
 	StaticText "Hue-Saturation", "Gold"
 	StaticText " "
@@ -148,7 +148,7 @@ OptionMenu "MFXOptionsMenu"
 	Slider "Magenta Hue", "mfx_hshue_m", -1, 1, 0.01, 2
 	Slider "Magenta Saturation", "mfx_hssat_m", -1, 1, 0.01, 2
 	Slider "Magenta Value", "mfx_hsval_m", -1, 1, 0.01, 2
-	Command "Reset to Default", "event resetmfxvars 4"
+	SafeCommand "Reset to Default", "event resetmfxvars 4"
 	StaticText " "
 	StaticText "BlurSharpShift", "Gold"
 	StaticText " "
@@ -162,7 +162,7 @@ OptionMenu "MFXOptionsMenu"
 	Slider "Sharp Amount", "mfx_bsssharpamount", 0, 8, 0.1, 1
 	Option "Shift Enable", "mfx_bssshiftenable", "YesNo"
 	Slider "Shift Radius", "mfx_bssshiftradius", 0, 1, 0.05, 2
-	Command "Reset to Default", "event resetmfxvars 5"
+	SafeCommand "Reset to Default", "event resetmfxvars 5"
 	StaticText " "
 	StaticText "Vignette / Border Blur", "Gold"
 	StaticText " "
@@ -180,12 +180,12 @@ OptionMenu "MFXOptionsMenu"
 	Slider "Blur Intensity", "mfx_bblurmul", 0, 2, 0.01, 2
 	Slider "Blur Offset", "mfx_bblurbump", -1, 1, 0.01, 2
 	Slider "Blur Radius", "mfx_bblurradius", 0, 4, 0.01, 2
-	Command "Reset to Default", "event resetmfxvars 6"
+	SafeCommand "Reset to Default", "event resetmfxvars 6"
 	StaticText " "
 	StaticText "Palette", "Gold"
 	StaticText " "
 	Option "Enable", "mfx_palenable", "YesNo"
 	Option "Palette", "mfx_palnum", "MFXPalette"
 	Slider "Dithering", "mfx_paldither", 0, 1, 0.01, 2
-	Command "Reset to Default", "event resetmfxvars 7"
+	SafeCommand "Reset to Default", "event resetmfxvars 7"
 }
