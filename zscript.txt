@@ -6,7 +6,7 @@ Class MariFXHandler : StaticEventHandler
 	transient ui CVar mfx_lsharpenable, mfx_lsharpradius,
 		mfx_lsharpclamp, mfx_lsharpblend,
 			// noise
-		mfx_ne, mfx_ni,
+		mfx_ne, mfx_ni, mfx_ns, mfx_np, mfx_bnp, mfx_nb,
 			// dirt
 		mfx_dirtenable, mfx_dirtcfactor, mfx_dirtmc,
 			// grading
@@ -23,6 +23,7 @@ Class MariFXHandler : StaticEventHandler
 		mfx_vigenable, mfx_bblurenable, mfx_vigpow, mfx_vigmul,
 		mfx_vigbump, mfx_vigcolor_r, mfx_vigcolor_g, mfx_vigcolor_b,
 		mfx_bblurpow, mfx_bblurmul, mfx_bblurbump, mfx_bblurradius,
+		mfx_vigshape, mfx_vigmode,
 			// color matrix
 		mfx_cmatenable, mfx_cmat_rr, mfx_cmat_rg, mfx_cmat_rb,
 		mfx_cmat_gr, mfx_cmat_gg, mfx_cmat_gb, mfx_cmat_br,
@@ -50,8 +51,16 @@ Class MariFXHandler : StaticEventHandler
 		Shader.SetUniform1f(p,"mfx_lumasharp","sharpblend",mfx_lsharpblend.GetFloat());
 		if ( !mfx_ne ) mfx_ne = CVar.GetCVar('mfx_ne',p);
 		if ( !mfx_ni ) mfx_ni = CVar.GetCVar('mfx_ni',p);
+		if ( !mfx_ns ) mfx_ns = CVar.GetCVar('mfx_ns',p);
+		if ( !mfx_np ) mfx_np = CVar.GetCVar('mfx_np',p);
+		if ( !mfx_bnp ) mfx_bnp = CVar.GetCVar('mfx_bnp',p);
+		if ( !mfx_nb ) mfx_nb = CVar.GetCVar('mfx_nb',p);
 		Shader.SetEnabled(p,"mfx_grain",mfx_ne.GetBool());
 		Shader.SetUniform1f(p,"mfx_grain","ni",mfx_ni.GetFloat());
+		Shader.SetUniform1f(p,"mfx_grain","ns",mfx_ns.GetFloat());
+		Shader.SetUniform1f(p,"mfx_grain","np",mfx_np.GetFloat());
+		Shader.SetUniform1f(p,"mfx_grain","bnp",mfx_bnp.GetFloat());
+		Shader.SetUniform1i(p,"mfx_grain","nb",mfx_nb.GetInt());
 		Shader.SetUniform1f(p,"mfx_grain","Timer",(gametic+e.fractic)/35.);
 		if ( !mfx_dirtenable ) mfx_dirtenable = CVar.GetCVar('mfx_dirtenable',p);
 		if ( !mfx_dirtmc ) mfx_dirtmc = CVar.GetCVar('mfx_dirtmc',p);
@@ -157,16 +166,6 @@ Class MariFXHandler : StaticEventHandler
 		Shader.SetUniform1f(p,"mfx_bss_sharp","bsssharpamount",mfx_bsssharpamount.GetFloat());
 		Shader.SetEnabled(p,"mfx_bss_shift",mfx_bssshiftenable.GetBool());
 		Shader.SetUniform1f(p,"mfx_bss_shift","bssshiftradius",mfx_bssshiftradius.GetFloat());
-		if ( !mfx_bblurenable ) mfx_bblurenable = CVar.GetCVar('mfx_bblurenable',p);
-		if ( !mfx_bblurpow ) mfx_bblurpow = CVar.GetCVar('mfx_bblurpow',p);
-		if ( !mfx_bblurmul ) mfx_bblurmul = CVar.GetCVar('mfx_bblurmul',p);
-		if ( !mfx_bblurbump ) mfx_bblurbump = CVar.GetCVar('mfx_bblurbump',p);
-		if ( !mfx_bblurradius ) mfx_bblurradius = CVar.GetCVar('mfx_bblurradius',p);
-		Shader.SetEnabled(p,"mfx_borderblur",mfx_bblurenable.GetBool());
-		Shader.SetUniform1f(p,"mfx_borderblur","bblurpow",mfx_bblurpow.GetFloat());
-		Shader.SetUniform1f(p,"mfx_borderblur","bblurmul",mfx_bblurmul.GetFloat());
-		Shader.SetUniform1f(p,"mfx_borderblur","bblurbump",mfx_bblurbump.GetFloat());
-		Shader.SetUniform1f(p,"mfx_borderblur","bblurradius",mfx_bblurradius.GetFloat());
 		if ( !mfx_vigenable ) mfx_vigenable = CVar.GetCVar('mfx_vigenable',p);
 		if ( !mfx_vigcolor_r ) mfx_vigcolor_r = CVar.GetCVar('mfx_vigcolor_r',p);
 		if ( !mfx_vigcolor_g ) mfx_vigcolor_g = CVar.GetCVar('mfx_vigcolor_g',p);
@@ -174,11 +173,29 @@ Class MariFXHandler : StaticEventHandler
 		if ( !mfx_vigpow ) mfx_vigpow = CVar.GetCVar('mfx_vigpow',p);
 		if ( !mfx_vigmul ) mfx_vigmul = CVar.GetCVar('mfx_vigmul',p);
 		if ( !mfx_vigbump ) mfx_vigbump = CVar.GetCVar('mfx_vigbump',p);
+		if ( !mfx_bblurenable ) mfx_bblurenable = CVar.GetCVar('mfx_bblurenable',p);
+		if ( !mfx_bblurpow ) mfx_bblurpow = CVar.GetCVar('mfx_bblurpow',p);
+		if ( !mfx_bblurmul ) mfx_bblurmul = CVar.GetCVar('mfx_bblurmul',p);
+		if ( !mfx_bblurbump ) mfx_bblurbump = CVar.GetCVar('mfx_bblurbump',p);
+		if ( !mfx_bblurradius ) mfx_bblurradius = CVar.GetCVar('mfx_bblurradius',p);
+		if ( !mfx_vigshape ) mfx_vigshape = CVar.GetCVar('mfx_vigshape',p);
+		if ( !mfx_vigmode ) mfx_vigmode = CVar.GetCVar('mfx_vigmode',p);
+		Shader.SetEnabled(p,"mfx_borderblur",mfx_bblurenable.GetBool());
+		Shader.SetUniform1f(p,"mfx_borderblur","vigpow",mfx_vigpow.GetFloat());
+		Shader.SetUniform1f(p,"mfx_borderblur","vigmul",mfx_vigmul.GetFloat());
+		Shader.SetUniform1f(p,"mfx_borderblur","vigbump",mfx_vigbump.GetFloat());
+		Shader.SetUniform1i(p,"mfx_borderblur","vigshape",mfx_vigshape.GetInt());
+		Shader.SetUniform1f(p,"mfx_borderblur","bblurpow",mfx_bblurpow.GetFloat());
+		Shader.SetUniform1f(p,"mfx_borderblur","bblurmul",mfx_bblurmul.GetFloat());
+		Shader.SetUniform1f(p,"mfx_borderblur","bblurbump",mfx_bblurbump.GetFloat());
+		Shader.SetUniform1f(p,"mfx_borderblur","bblurradius",mfx_bblurradius.GetFloat());
 		Shader.SetEnabled(p,"mfx_vignette",mfx_vigenable.GetBool());
 		Shader.SetUniform3f(p,"mfx_vignette","vigcolor",(mfx_vigcolor_r.GetFloat(),mfx_vigcolor_g.GetFloat(),mfx_vigcolor_b.GetFloat()));
 		Shader.SetUniform1f(p,"mfx_vignette","vigpow",mfx_vigpow.GetFloat());
 		Shader.SetUniform1f(p,"mfx_vignette","vigmul",mfx_vigmul.GetFloat());
 		Shader.SetUniform1f(p,"mfx_vignette","vigbump",mfx_vigbump.GetFloat());
+		Shader.SetUniform1i(p,"mfx_vignette","vigshape",mfx_vigshape.GetInt());
+		Shader.SetUniform1i(p,"mfx_vignette","vigmode",mfx_vigmode.GetInt());
 		if ( !mfx_palenable ) mfx_palenable = CVar.GetCVar('mfx_palenable',p);
 		if ( !mfx_palnum ) mfx_palnum = CVar.GetCVar('mfx_palnum',p);
 		if ( !mfx_paldither ) mfx_paldither = CVar.GetCVar('mfx_paldither',p);
@@ -196,8 +213,16 @@ Class MariFXHandler : StaticEventHandler
 			case 0:
 				if ( !mfx_ne ) mfx_ne = CVar.GetCVar('mfx_ne',p);
 				if ( !mfx_ni ) mfx_ni = CVar.GetCVar('mfx_ni',p);
+				if ( !mfx_ns ) mfx_ns = CVar.GetCVar('mfx_ns',p);
+				if ( !mfx_np ) mfx_np = CVar.GetCVar('mfx_np',p);
+				if ( !mfx_bnp ) mfx_bnp = CVar.GetCVar('mfx_bnp',p);
+				if ( !mfx_nb ) mfx_nb = CVar.GetCVar('mfx_nb',p);
 				mfx_ne.ResetToDefault();
 				mfx_ni.ResetToDefault();
+				mfx_ns.ResetToDefault();
+				mfx_np.ResetToDefault();
+				mfx_bnp.ResetToDefault();
+				mfx_nb.ResetToDefault();
 				break;
 			case 1:
 				if ( !mfx_dirtenable ) mfx_dirtenable = CVar.GetCVar('mfx_dirtenable',p);
@@ -326,6 +351,15 @@ Class MariFXHandler : StaticEventHandler
 				mfx_bssshiftradius.ResetToDefault();
 				break;
 			case 6:
+				if ( !mfx_vigenable ) mfx_vigenable = CVar.GetCVar('mfx_vigenable',p);
+				if ( !mfx_vigcolor_r ) mfx_vigcolor_r = CVar.GetCVar('mfx_vigcolor_r',p);
+				if ( !mfx_vigcolor_g ) mfx_vigcolor_g = CVar.GetCVar('mfx_vigcolor_g',p);
+				if ( !mfx_vigcolor_b ) mfx_vigcolor_b = CVar.GetCVar('mfx_vigcolor_b',p);
+				if ( !mfx_vigpow ) mfx_vigpow = CVar.GetCVar('mfx_vigpow',p);
+				if ( !mfx_vigmul ) mfx_vigmul = CVar.GetCVar('mfx_vigmul',p);
+				if ( !mfx_vigbump ) mfx_vigbump = CVar.GetCVar('mfx_vigbump',p);
+				if ( !mfx_vigshape ) mfx_vigshape = CVar.GetCVar('mfx_vigshape',p);
+				if ( !mfx_vigmode ) mfx_vigmode = CVar.GetCVar('mfx_vigmode',p);
 				if ( !mfx_bblurenable ) mfx_bblurenable = CVar.GetCVar('mfx_bblurenable',p);
 				if ( !mfx_bblurpow ) mfx_bblurpow = CVar.GetCVar('mfx_bblurpow',p);
 				if ( !mfx_bblurmul ) mfx_bblurmul = CVar.GetCVar('mfx_bblurmul',p);
@@ -336,15 +370,6 @@ Class MariFXHandler : StaticEventHandler
 				mfx_bblurmul.ResetToDefault();
 				mfx_bblurbump.ResetToDefault();
 				mfx_bblurradius.ResetToDefault();
-				break;
-			case 7:
-				if ( !mfx_vigenable ) mfx_vigenable = CVar.GetCVar('mfx_vigenable',p);
-				if ( !mfx_vigcolor_r ) mfx_vigcolor_r = CVar.GetCVar('mfx_vigcolor_r',p);
-				if ( !mfx_vigcolor_g ) mfx_vigcolor_g = CVar.GetCVar('mfx_vigcolor_g',p);
-				if ( !mfx_vigcolor_b ) mfx_vigcolor_b = CVar.GetCVar('mfx_vigcolor_b',p);
-				if ( !mfx_vigpow ) mfx_vigpow = CVar.GetCVar('mfx_vigpow',p);
-				if ( !mfx_vigmul ) mfx_vigmul = CVar.GetCVar('mfx_vigmul',p);
-				if ( !mfx_vigbump ) mfx_vigbump = CVar.GetCVar('mfx_vigbump',p);
 				mfx_vigenable.ResetToDefault();
 				mfx_vigcolor_r.ResetToDefault();
 				mfx_vigcolor_g.ResetToDefault();
@@ -352,14 +377,26 @@ Class MariFXHandler : StaticEventHandler
 				mfx_vigpow.ResetToDefault();
 				mfx_vigmul.ResetToDefault();
 				mfx_vigbump.ResetToDefault();
+				mfx_vigshape.ResetToDefault();
+				mfx_vigmode.ResetToDefault();
 				break;
-			case 8:
+			case 7:
 				if ( !mfx_palenable ) mfx_palenable = CVar.GetCVar('mfx_palenable',p);
 				if ( !mfx_palnum ) mfx_palnum = CVar.GetCVar('mfx_palnum',p);
 				if ( !mfx_paldither ) mfx_paldither = CVar.GetCVar('mfx_paldither',p);
 				mfx_palenable.ResetToDefault();
 				mfx_palnum.ResetToDefault();
 				mfx_paldither.ResetToDefault();
+				break;
+			case 8:
+				if ( !mfx_lsharpenable ) mfx_lsharpenable = CVar.GetCVar('mfx_lsharpenable',p);
+				if ( !mfx_lsharpradius ) mfx_lsharpradius = CVar.GetCVar('mfx_lsharpradius',p);
+				if ( !mfx_lsharpclamp ) mfx_lsharpclamp = CVar.GetCVar('mfx_lsharpclamp',p);
+				if ( !mfx_lsharpblend ) mfx_lsharpblend = CVar.GetCVar('mfx_lsharpblend',p);
+				mfx_lsharpenable.ResetToDefault();
+				mfx_lsharpradius.ResetToDefault();
+				mfx_lsharpclamp.ResetToDefault();
+				mfx_lsharpblend.ResetToDefault();
 				break;
 			}
 		}

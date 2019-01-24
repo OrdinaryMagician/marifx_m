@@ -1,4 +1,7 @@
-/* math color grading from MariFX */
+/*
+   Math color grading from MariENB
+   (C)2012-2019 Marisa Kirisame
+*/
 #define luminance(x) dot(x,vec3(0.2126,0.7152,0.0722))
 
 vec3 rgb2hsv( vec3 c )

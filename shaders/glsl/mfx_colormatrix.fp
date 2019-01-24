@@ -1,3 +1,7 @@
+/*
+   Simple color matrix from MariENB
+   (C)2012-2019 Marisa Kirisame
+*/
 void main()
 {
 	vec2 coord = TexCoord;

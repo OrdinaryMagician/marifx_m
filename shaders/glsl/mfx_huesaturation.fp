@@ -1,3 +1,8 @@
+/*
+   Hue-Saturation filter from MariENB, ported over from GIMP
+   (C)2007 Michael Natterer
+   (C)2012-2019 Marisa Kirisame
+*/
 vec3 rgb2hsv( vec3 c )
 {
 	vec4 K = vec4(0.0,-1.0/3.0,2.0/3.0,-1.0);

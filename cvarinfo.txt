@@ -5,10 +5,14 @@ user float mfx_lsharpblend = 6.0;
 
 user bool mfx_ne = false;
 user float mfx_ni = 0.05;
+user float mfx_ns = 0.0;
+user float mfx_np = 4.0;
+user float mfx_bnp = 1.5;
+user int mfx_nb = 2;
 
 user bool mfx_dirtenable = false;
 user float mfx_dirtcfactor = 0.05;
-user float mfx_dirtmc = 3.0;
+user float mfx_dirtmc = 4.0;
 
 user bool mfx_gradeenable = false;
 user float mfx_grademul_r = 1.0;
@@ -70,19 +74,21 @@ user bool mfx_bssshiftenable = false;
 user float mfx_bssshiftradius = 0.75;
 
 user bool mfx_bblurenable = false;
-user float mfx_bblurpow = 2.0;
-user float mfx_bblurmul = 1.5;
-user float mfx_bblurbump = -0.5;
+user float mfx_bblurpow = 1.0;
+user float mfx_bblurmul = 1.0;
+user float mfx_bblurbump = 0.0;
 user float mfx_bblurradius = 1.0;
 
 user bool mfx_vigenable = false;
-user float mfx_vigcolor_r = -1.0;
-user float mfx_vigcolor_g = -1.0;
-user float mfx_vigcolor_b = -1.0;
-user float mfx_vigpow = 3.0;
-user float mfx_vigmul = 0.65;
+user float mfx_vigcolor_r = 0.0;
+user float mfx_vigcolor_g = 0.0;
+user float mfx_vigcolor_b = 0.0;
+user float mfx_vigpow = 4.0;
+user float mfx_vigmul = 0.75;
 user float mfx_vigbump = 0.0;
+user int mfx_vigshape = 1;
+user int mfx_vigmode = 0;
 
 user bool mfx_palenable = false;
-user int mfx_palnum = 1;
+user int mfx_palnum = 0;
 user float mfx_paldither = 0.05;

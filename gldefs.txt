@@ -82,10 +82,15 @@ HardwareShader postprocess scene
 {
 	Name "mfx_borderblur"
 	Shader "shaders/glsl/mfx_borderblur.fp" 330
+	Uniform float vigpow
+	Uniform float vigmul
+	Uniform float vigbump
+	Uniform int vigshape
 	Uniform float bblurpow
 	Uniform float bblurmul
 	Uniform float bblurbump
 	Uniform float bblurradius
+	Texture VignetteTexture "textures/mfxvig.png"
 }
 
 HardwareShader postprocess scene
@@ -94,6 +99,10 @@ HardwareShader postprocess scene
 	Shader "shaders/glsl/mfx_grain.fp" 330
 	Uniform float Timer
 	Uniform float ni
+	Uniform float ns
+	Uniform float np
+	Uniform float bnp
+	Uniform int nb
 	Texture NoiseTexture "textures/mfxnoise.png"
 }
 
@@ -103,7 +112,7 @@ HardwareShader postprocess scene
 	Shader "shaders/glsl/mfx_dirt.fp" 330
 	Uniform float dirtcfactor
 	Uniform float dirtmc
-	Texture NoiseTexture "textures/mfxnoise.png"
+	Texture NoiseTexture "textures/mfxdirt.png"
 }
 
 HardwareShader postprocess scene
@@ -114,6 +123,9 @@ HardwareShader postprocess scene
 	Uniform float vigpow
 	Uniform float vigmul
 	Uniform float vigbump
+	Uniform int vigshape
+	Uniform int vigmode
+	Texture VignetteTexture "textures/mfxvig.png"
 }
 
 HardwareShader postprocess scene

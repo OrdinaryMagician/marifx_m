@@ -4,6 +4,27 @@ AddOptionMenu "OptionsMenu"
 	SubMenu "MariFX Options", "MFXOptionsMenu"
 }
 
+OptionValue "MFXGrainBlend"
+{
+	0, "Add"
+	1, "Overlay"
+	2, "Dark Mask"
+}
+
+OptionValue "MFXVigShape"
+{
+	0, "Circle"
+	1, "Box"
+	2, "Texture"
+}
+
+OptionValue "MFXVigMode"
+{
+	0, "Translucent"
+	1, "Add"
+	2, "Multiply"
+}
+
 OptionValue "MFXPalette"
 {
 	0, "Doom"
@@ -50,12 +71,16 @@ OptionMenu "MFXOptionsMenu"
 	Slider "Sharpen Radius", "mfx_lsharpradius", 0, 1, 0.01, 2
 	Slider "Sharpen Threshold", "mfx_lsharpclamp", 0, 1, 0.01, 2
 	Slider "Sharpen Strength", "mfx_lsharpblend", 0, 8, 0.1, 1
-	Command "Reset to Default", "event resetmfxvars 9"
+	Command "Reset to Default", "event resetmfxvars 8"
 	StaticText " "
 	StaticText "Film Grain", "Gold"
 	StaticText " "
 	Option "Enable", "mfx_ne", "YesNo"
 	Slider "Grain Intensity", "mfx_ni", 0, 1, 0.01, 2
+	Slider "Grain Saturation", "mfx_ns", -1, 1, 0.01, 2
+	Slider "Grain Contrast", "mfx_np", 0.5, 4, 0.01, 2
+	Option "Grain Blend Mode", "mfx_nb", "MFXGrainBlend"
+	Slider "Grain Dark Mask Contrast", "mfx_bnp", 0.5, 8, 0.01, 2
 	Command "Reset to Default", "event resetmfxvars 0"
 	StaticText " "
 	StaticText "Screen Dirt", "Gold"
@@ -139,30 +164,28 @@ OptionMenu "MFXOptionsMenu"
 	Slider "Shift Radius", "mfx_bssshiftradius", 0, 1, 0.05, 2
 	Command "Reset to Default", "event resetmfxvars 5"
 	StaticText " "
-	StaticText "Border Blur", "Gold"
+	StaticText "Vignette / Border Blur", "Gold"
 	StaticText " "
-	Option "Enable", "mfx_bblurenable", "YesNo"
-	Slider "Blur Gamma", "mfx_bblurpow", 0, 4, 0.01, 2
-	Slider "Blur Intensity", "mfx_bblurmul", 0, 2, 0.01, 2
-	Slider "Blur Offset", "mfx_bblurbump", -1, 1, 0.01, 2
-	Slider "Blur Radius", "mfx_bblurradius", 0, 4, 0.01, 2
-	Command "Reset to Default", "event resetmfxvars 6"
-	StaticText " "
-	StaticText "Vignette", "Gold"
-	StaticText " "
-	Option "Enable", "mfx_vigenable", "YesNo"
+	Option "Enable Vignette", "mfx_vigenable", "YesNo"
 	Slider "Vignette Red", "mfx_vigcolor_r", -1, 1, 0.01, 2
 	Slider "Vignette Green", "mfx_vigcolor_g", -1, 1, 0.01, 2
 	Slider "Vignette Blue", "mfx_vigcolor_b", -1, 1, 0.01, 2
 	Slider "Vignette Gamma", "mfx_vigpow", 0, 4, 0.01, 2
 	Slider "Vignette Intensity", "mfx_vigmul", 0, 2, 0.01, 2
 	Slider "Vignette Offset", "mfx_vigbump", -1, 1, 0.01, 2
-	Command "Reset to Default", "event resetmfxvars 7"
+	Option "Vignette Shape", "mfx_vigshape", "MFXVigShape"
+	Option "Vignette Mode", "mfx_vigmode", "MFXVigMode"
+	Option "Enable Blur", "mfx_bblurenable", "YesNo"
+	Slider "Blur Gamma", "mfx_bblurpow", 0, 4, 0.01, 2
+	Slider "Blur Intensity", "mfx_bblurmul", 0, 2, 0.01, 2
+	Slider "Blur Offset", "mfx_bblurbump", -1, 1, 0.01, 2
+	Slider "Blur Radius", "mfx_bblurradius", 0, 4, 0.01, 2
+	Command "Reset to Default", "event resetmfxvars 6"
 	StaticText " "
 	StaticText "Palette", "Gold"
 	StaticText " "
 	Option "Enable", "mfx_palenable", "YesNo"
 	Option "Palette", "mfx_palnum", "MFXPalette"
 	Slider "Dithering", "mfx_paldither", 0, 1, 0.01, 2
-	Command "Reset to Default", "event resetmfxvars 8"
+	Command "Reset to Default", "event resetmfxvars 7"
 }
