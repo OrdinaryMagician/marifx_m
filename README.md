@@ -24,6 +24,11 @@ users.
 The GIMP filter in shader form. Allows shifting the hue and tweaking the
 saturation and value of red, yellow, green, cyan, blue and magenta ranges.
 
+### Curves (TODO)
+
+8-point curve filter with cubic interpolation. Works just like the GIMP filter,
+with curves for value, red, green and blue.
+
 ### BlurSharpShift
 
 Blurring followed by sharpening, followed by chromatic aberration. This is a

@@ -1,76 +1,76 @@
 AddOptionMenu "OptionsMenu"
 {
 	StaticText " "
-	SubMenu "MariFX Options", "MFXOptionsMenu"
+	SubMenu "$MFX_TITLE", "MFXOptionsMenu"
 }
 
 OptionValue "MFXGrainBlend"
 {
-	0, "Add"
-	1, "Overlay"
-	2, "Dark Mask"
+	0, "$MFX_BLENDMODE1"
+	1, "$MFX_BLENDMODE2"
+	2, "$MFX_BLENDMODE3"
 }
 
 OptionValue "MFXVigShape"
 {
-	0, "Circle"
-	1, "Box"
-	2, "Texture"
+	0, "$MFX_VIGSHAPE1"
+	1, "$MFX_VIGSHAPE2"
+	2, "$MFX_VIGSHAPE3"
 }
 
 OptionValue "MFXVigMode"
 {
-	0, "Translucent"
-	1, "Add"
-	2, "Multiply"
+	0, "$MFX_VIGMODE1"
+	1, "$MFX_VIGMODE2"
+	2, "$MFX_VIGMODE3"
 }
 
 OptionValue "MFXPalette"
 {
-	0, "Doom"
-	1, "Heretic"
-	2, "Hexen"
-	3, "Strife"
-	4, "Hacx"
-	5, "Wolf3D"
-	6, "Rise of the Triad"
-	7, "Duke Nukem 3D"
-	8, "Blood"
-	9, "Shadow Warrior"
-	10, "Quake"
-	11, "Hexen 2"
-	12, "Quake 2"
-	13, "Amulets & Armor"
-	14, "Project .Blank"
-	15, "Ancient Aliens"
-	16, "Back to Saturn X"
-	17, "Eviternity"
-	18, "The Adventures of Square"
-	19, "Zen Dynamics"
-	//20, "20 - Unused"
-	//21, "21 - Unused"
-	//22, "22 - Unused"
-	//23, "23 - Unused"
-	24, "Hocus Pocus"
-	25, "Tyrian"
-	26, "PICO-8"
-	27, "Standard VGA"
-	28, "Standard EGA"
-	29, "Commodore 64"
-	30, "Gameboy"
-	31, "Web Palette"
+	0, "$MFX_PALETTE1"
+	1, "$MFX_PALETTE2"
+	2, "$MFX_PALETTE3"
+	3, "$MFX_PALETTE4"
+	4, "$MFX_PALETTE5"
+	5, "$MFX_PALETTE6"
+	6, "$MFX_PALETTE7"
+	7, "$MFX_PALETTE8"
+	8, "$MFX_PALETTE9"
+	9, "$MFX_PALETTE10"
+	10, "$MFX_PALETTE11"
+	11, "$MFX_PALETTE12"
+	12, "$MFX_PALETTE13"
+	13, "$MFX_PALETTE14"
+	14, "$MFX_PALETTE15"
+	15, "$MFX_PALETTE16"
+	16, "$MFX_PALETTE17"
+	17, "$MFX_PALETTE18"
+	18, "$MFX_PALETTE19"
+	19, "$MFX_PALETTE20"
+	20, "$MFX_PALETTE21"
+	21, "$MFX_PALETTE22"
+	22, "$MFX_PALETTE23"
+	23, "$MFX_PALETTE24"
+	24, "$MFX_PALETTE25"
+	25, "$MFX_PALETTE26"
+	26, "$MFX_PALETTE27"
+	27, "$MFX_PALETTE28"
+	28, "$MFX_PALETTE29"
+	29, "$MFX_PALETTE30"
+	30, "$MFX_PALETTE31"
+	31, "$MFX_PALETTE32"
 }
 
 OptionMenu "MFXOptionsMenu"
 {
-	Title "MariFX Options"
+	Title "$MFX_TITLE"
 	StaticText " "
 	StaticText "Luma Sharpen", "Gold"
 	StaticText " "
 	Option "Enable", "mfx_lsharpenable", "YesNo"
 	Slider "Sharpen Radius", "mfx_lsharpradius", 0, 1, 0.01, 2
 	Slider "Sharpen Threshold", "mfx_lsharpclamp", 0, 1, 0.01, 2
-	Slider "Sharpen Strength", "mfx_lsharpblend", 0, 8, 0.1, 1
+	Slider "Sharpen Strength", "mfx_lsharpblend", 0, 10, 0.1, 1
 	SafeCommand "Reset to Default", "event resetmfxvars 8"
 	StaticText " "
 	StaticText "Film Grain", "Gold"
@@ -78,9 +78,9 @@ OptionMenu "MFXOptionsMenu"
 	Option "Enable", "mfx_ne", "YesNo"
 	Slider "Grain Intensity", "mfx_ni", 0, 1, 0.01, 2
 	Slider "Grain Saturation", "mfx_ns", -1, 1, 0.01, 2
-	Slider "Grain Contrast", "mfx_np", 0.5, 4, 0.01, 2
+	Slider "Grain Contrast", "mfx_np", 0.5, 8, 0.01, 2
 	Option "Grain Blend Mode", "mfx_nb", "MFXGrainBlend"
-	Slider "Grain Dark Mask Contrast", "mfx_bnp", 0.5, 8, 0.01, 2
+	Slider "Grain Dark Mask Contrast", "mfx_bnp", 0.5, 10, 0.01, 2
 	SafeCommand "Reset to Default", "event resetmfxvars 0"
 	StaticText " "
 	StaticText "Screen Dirt", "Gold"
@@ -170,13 +170,13 @@ OptionMenu "MFXOptionsMenu"
 	Slider "Vignette Red", "mfx_vigcolor_r", -1, 1, 0.01, 2
 	Slider "Vignette Green", "mfx_vigcolor_g", -1, 1, 0.01, 2
 	Slider "Vignette Blue", "mfx_vigcolor_b", -1, 1, 0.01, 2
-	Slider "Vignette Gamma", "mfx_vigpow", 0, 4, 0.01, 2
+	Slider "Vignette Gamma", "mfx_vigpow", 0, 16, 0.01, 2
 	Slider "Vignette Intensity", "mfx_vigmul", 0, 2, 0.01, 2
 	Slider "Vignette Offset", "mfx_vigbump", -1, 1, 0.01, 2
 	Option "Vignette Shape", "mfx_vigshape", "MFXVigShape"
 	Option "Vignette Mode", "mfx_vigmode", "MFXVigMode"
 	Option "Enable Blur", "mfx_bblurenable", "YesNo"
-	Slider "Blur Gamma", "mfx_bblurpow", 0, 4, 0.01, 2
+	Slider "Blur Gamma", "mfx_bblurpow", 0, 16, 0.01, 2
 	Slider "Blur Intensity", "mfx_bblurmul", 0, 2, 0.01, 2
 	Slider "Blur Offset", "mfx_bblurbump", -1, 1, 0.01, 2
 	Slider "Blur Radius", "mfx_bblurradius", 0, 4, 0.01, 2
