@@ -51,9 +51,9 @@ void main()
 	int ph = 0, sh = 0;
 	float pv = 0.0, sv = 0.0;
 	bool usesh = false;
-	float hues[6] = {hshue_r,hshue_y,hshue_g,hshue_c,hshue_b,hshue_m};
-	float sats[6] = {hssat_r,hssat_y,hssat_g,hssat_c,hssat_b,hssat_m};
-	float vals[6] = {hsval_r,hsval_y,hsval_g,hsval_c,hsval_b,hsval_m};
+	float hues[6] = float[](hshue_r,hshue_y,hshue_g,hshue_c,hshue_b,hshue_m);
+	float sats[6] = float[](hssat_r,hssat_y,hssat_g,hssat_c,hssat_b,hssat_m);
+	float vals[6] = float[](hsval_r,hsval_y,hsval_g,hsval_c,hsval_b,hsval_m);
 	float v;
 	for ( float h=0.0; h<7.0; h+=1.0 )
 	{

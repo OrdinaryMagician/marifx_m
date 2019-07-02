@@ -5,8 +5,8 @@
 void main()
 {
 	#define d(x) x/64.0
-	float dither8[64] =
-	{
+	float dither8[64] = float[]
+	(
 		d( 0),d(48),d(12),d(60),d( 3),d(51),d(15),d(63),
 		d(32),d(16),d(44),d(28),d(35),d(19),d(47),d(31),
 		d( 8),d(56),d( 4),d(52),d(11),d(59),d( 7),d(55),
@@ -15,7 +15,7 @@ void main()
 		d(34),d(18),d(46),d(30),d(33),d(17),d(45),d(29),
 		d(10),d(58),d( 6),d(54),d( 9),d(57),d( 5),d(53),
 		d(42),d(26),d(38),d(22),d(41),d(25),d(37),d(21)
-	};
+	);
 	#undef d
 	vec2 coord = TexCoord;
 	vec2 sfact = textureSize(InputTexture,0);
