@@ -4,7 +4,7 @@
 */
 void main()
 {
-	float gauss4[4] = float4[]( 0.270682, 0.216745, 0.111281, 0.036633 );
+	float gauss4[4] = float[]( 0.270682, 0.216745, 0.111281, 0.036633 );
 	vec2 coord = TexCoord;
 	vec4 res = texture(InputTexture,coord);
 	vec2 bresl = textureSize(InputTexture,0);
