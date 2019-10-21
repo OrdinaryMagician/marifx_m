@@ -59,6 +59,9 @@ OptionValue "MFXPalette"
 	29, "$MFX_PALETTE30"
 	30, "$MFX_PALETTE31"
 	31, "$MFX_PALETTE32"
+	32, "$MFX_PALETTE33"
+	33, "$MFX_PALETTE34"
+	34, "$MFX_PALETTE35"
 }
 
 OptionMenu "MFXOptionsMenu"
